@@ -31,11 +31,11 @@ def main():
 
 
 	# open connection to the database
-        conn = db.connect(db_file, detect_types=db.PARSE_DECLTYPES|db.PARSE_COLNAMES)
+	conn = db.connect(db_file, detect_types=db.PARSE_DECLTYPES|db.PARSE_COLNAMES)
         # if table doesn't exist, create it
-        conn.execute('''CREATE TABLE IF NOT EXISTS results (timestamp TIMESTAMP PRIMARY KEY,
-                                 id INTEGER, sponsor TEXT, name TEXT, distance REAL, ping REAL,
-                                 download REAL, upload REAL)''')
+	conn.execute('''CREATE TABLE IF NOT EXISTS results (timestamp TIMESTAMP PRIMARY KEY,
+			id INTEGER, sponsor TEXT, name TEXT, distance REAL, ping REAL,
+			download REAL, upload REAL)''')
 
 	# add results to database
 	print(results)
