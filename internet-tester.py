@@ -25,7 +25,7 @@ def main():
 	else:
 		print("Internet down! Fuuuuuuuuu")
 		# get error number
-		errno = int(err_str.split('Errno ')[1].split(']')[0])
+		errno = int(output.split('Errno ')[1].split(']')[0])
 		# create results
 		results = [ts.now().isoformat(), errno] + [None for i in range(6)]
 
