@@ -12,9 +12,9 @@ def main():
     # open connection to the database
     conn = db.connect(db_file, detect_types=db.PARSE_DECLTYPES | db.PARSE_COLNAMES)
     # if table doesn't exist, create it
-    conn.execute('''CREATE TABLE IF NOT EXISTS results (timestamp TIMESTAMP PRIMARY KEY,
-				 id INTEGER, sponsor TEXT, name TEXT, distance REAL, ping REAL, 
-				 download REAL, upload REAL)''')
+    conn.execute('''CREATE TABLE IF NOT EXISTS raw (timestamp TIMESTAMP PRIMARY KEY,
+                 id INTEGER, sponsor TEXT, name TEXT, distance REAL, ping REAL, 
+                 download REAL, upload REAL)''')
 
     # iterate over csv file
     with open(csv_file) as f:
@@ -35,7 +35,7 @@ def main():
                 results[0] = cur_ts
 
             # add results to database
-            conn.execute("INSERT INTO results VALUES (?, ?, ?, ?, ?, ?, ?, ?)", results)
+            conn.execute("INSERT INTO raw VALUES (?, ?, ?, ?, ?, ?, ?, ?)", results)
 
     # save changes to database and close
     conn.commit()

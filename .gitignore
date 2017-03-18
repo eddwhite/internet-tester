@@ -3,3 +3,4 @@
 *.sqlite
 *.swp
 .idea/
+node_modules/

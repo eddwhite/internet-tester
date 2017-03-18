@@ -1,9 +1,48 @@
 <!DOCTYPE html>
 <html lang=en>
 <head>
-	<title>The black door&middot; IoT for the whole house!</title> 
+	<title>The black door &middot; IoT for the whole house!</title> 
+    <script src="node_modules/chart.js/dist/Chart.bundle.js"></script>
 </head>
 <body>
 	UNDER CONSTRUCTION!
+    <div style="width: 75%">
+        <canvas id="myChart"></canvas>
+    </div>
+<script>
+    var ctx = document.getElementById("myChart");
+    var data = {
+        labels: [1, 2, 3],
+        datasets: [
+            {
+                label: "Download",
+                fill: false,
+                data: [1, 2, 3]
+            }, {
+                label: "Upload",
+                fill: false,
+                data: [3, 2, 1]
+            }
+        ]
+    };
+    var myChart = new Chart(ctx, {
+        type: 'line',
+        data: data,
+        options: {
+            title:{
+                display:true,
+                text:"Internet speeds"
+            },
+            scales: {
+                xAxes: [{
+                    time: {
+                        unit: 'month'
+                    }
+                }]
+            }
+            
+        }
+    });
+    </script>
 </body>
 </html>
