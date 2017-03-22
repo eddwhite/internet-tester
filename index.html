@@ -9,7 +9,28 @@
     <div style="width: 75%">
         <canvas id="myChart"></canvas>
     </div>
+    <a href="" onclick="load_my_lovely_data(); return false;">
+        Load my lovely data
+    </a>
+    <div id="container"></div> 
 <script>
+    function on_request_load () {
+        var container = document.getElementById("container");
+        var a = JSON.parse(this.responseText);
+        for(var i = 0; i < a.length; i++) {
+            var s = document.createElement("span");
+            s.innerHTML = a[i];
+            container.appendChild(s);
+        }
+    }
+
+    function load_my_lovely_data() {
+        var request = new XMLHttpRequest();
+        request.addEventListener("load", on_request_load);
+        request.open("GET", "data.html");
+        request.send();
+    }
+
     var ctx = document.getElementById("myChart");
     var data = {
         labels: [1, 2, 3],
